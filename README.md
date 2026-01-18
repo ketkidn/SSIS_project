@@ -95,3 +95,9 @@ project_tools:
     - Prevention of duplicate inserts
     - Production-like data consistency and reliability
 
+
+Running Windows on Mac was a concern for me, but Parallels Desktop worked incredibly smooth 🚀
+I was able to set up Windows quickly and run Visual Studio + SSIS without lag or crashes. Performance felt native, switching between macOS and Windows apps was seamless, and the overall experience was very stable.
+If you’re on a Mac and need Windows-only tools, I highly recommend Parallels Desktop.
+Download link: https://www.parallels.com/products/desktop/
+Hope this helps others facing the same setup challenge
