@@ -1,34 +1,36 @@
 # SSIS_project
-I designed and developed a real-world SSIS ETL pipeline with the following components:
 
-Architecture & Flow:
-Multiple SQL Server source systems
-Centralized data warehouse target
-End-to-end Control Flow & Data Flow design
+I designed and developed a real-world SSIS ETL pipeline with the following components.
 
-Key ETL Components Used:
-Lookup (detect new vs changed records)
-Derived Column (data transformation & flags)
-Conditional Split (routing data based on change logic)
-Merge / Merge Join
-Variables & Parameters
-Error handling and rerunnable package design
+## Architecture and Flow
+Multiple SQL Server source systems  
+Centralized data warehouse target  
+End-to-end Control Flow and Data Flow design  
 
-Business Logic Implemented:
-Slowly Changing Dimension (SCD Type 2) for employee data
-Full history tracking with effective dates
-Ensured only one active record (IsCurrent = 1) per employee
-Handled multiple department changes across different runs
-Prevented duplicate inserts on re-execution (true incremental load)
+## Key ETL Components Used
+Lookup (detect new vs changed records)  
+Derived Column (data transformation and flags)  
+Conditional Split (routing data based on change logic)  
+Merge / Merge Join  
+Variables and Parameters  
+Error handling and rerunnable package design  
 
-Challenges Solved:
-Managing multiple updates for the same key
-Ensuring data correctness during package reruns
-Debugging edge cases where history logic failed
-Designing ETL to behave correctly in production-like scenarios, not just first runs
+## Business Logic Implemented
+Slowly Changing Dimension (SCD Type 2) for employee data  
+Full history tracking with effective dates  
+Ensured only one active record (IsCurrent = 1) per employee  
+Handled multiple department changes across different runs  
+Prevented duplicate inserts on re-execution (true incremental load)  
 
-IMPORTANT
+## Challenges Solved
+Managing multiple updates for the same key  
+Ensuring data correctness during package reruns  
+Debugging edge cases where history logic failed  
+Designing ETL to behave correctly in production-like scenarios, not just first runs  
 
+## IMPORTANT
+
+```yaml
 project_tools:
   etl_tool:
     name: SQL Server Integration Services (SSIS)
@@ -92,3 +94,4 @@ project_tools:
     - Correct history maintenance across reruns
     - Prevention of duplicate inserts
     - Production-like data consistency and reliability
+
