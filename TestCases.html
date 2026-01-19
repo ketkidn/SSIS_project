@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SCD Type 1 & Type 2 Test Cases – DimEmployee</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+<h2>SCD Type 1 & Type 2 Test Cases – DimEmployee</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>TC #</th>
+            <th>Scenario</th>
+            <th>Source Change</th>
+            <th>SSIS Action</th>
+            <th>Expected Result in DimEmployee</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>First load</td>
+            <td>New EmpID</td>
+            <td>INSERT</td>
+            <td>1 row per EmpID, EndDate = NULL, IsCurrent = 1</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Re-run same data</td>
+            <td>No change</td>
+            <td>NO ACTION</td>
+            <td>Row count unchanged</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Salary change</td>
+            <td>Salary updated</td>
+            <td>UPDATE (Type-1)</td>
+            <td>Salary updated, no new row, IsCurrent = 1</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Department change</td>
+            <td>Department updated</td>
+            <td>SCD-2</td>
+            <td>Old row IsCurrent = 0, EndDate = today; new row inserted</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Salary + Dept change</td>
+            <td>Both changed</td>
+            <td>SCD-2</td>
+            <td>Old row expired, new row with new salary & dept</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Multiple dept changes</td>
+            <td>Dept changed twice</td>
+            <td>SCD-2</td>
+            <td>Multiple historical rows, only one IsCurrent = 1</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>New employee added</td>
+            <td>New EmpID</td>
+            <td>INSERT</td>
+            <td>New row inserted with IsCurrent = 1</td>
+            <td>PASS</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Re-run after SCD-2</td>
+            <td>No further change</td>
+            <td>NO ACTION</td>
+            <td>No duplicate rows</td>
+            <td>PASS</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
